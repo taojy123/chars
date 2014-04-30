@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>文字分析助手</title>
+
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/baby-blue.css">
+    <link rel="stylesheet" href="/static/css/tablesorter/blue/style.css" type="text/css" media="print, projection, screen" />
+    <script type="text/javascript" src="/static/js/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //表格显示
+            $("#myTable").tablesorter({
+                widgets: ['zebra']
+            })
+
+            $("#view").addClass("pure-menu-selected")
+        })
+    </script>
+
+
+
+</head>
+
+<body>
+
+<div class="pure-g-r" id="layout" style="letter-spacing:0">
+
+    {% include "menu.html" %}
+
+    <div  id="right">
+
+        <div class="header">
+            <h1>文字分析助手</h1>
+        </div>
+
+        <div id="content" style="text-align: center;margin-top: 30px" >
+            {% if ones %}
+            <div style="border: 1px solid black">
+                <p>一级({{ ones|length }})</p>
+                {% for c in ones %}
+                    <p>{{ c.0 }} - {{ c.1 }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+
+            {% if twos %}
+            <div style="border: 1px solid black">
+                <p>二级({{ twos|length }})</p>
+                {% for c in twos %}
+                    <p>{{ c.0 }} - {{ c.1 }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if threes %}
+            <div style="border: 1px solid black">
+                <p>三级({{ threes|length }})</p>
+                {% for c in threes %}
+                    <p>{{ c.0 }} - {{ c.1 }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if fours %}
+            <div style="border: 1px solid black">
+                <p>四级({{ fours|length }})</p>
+                {% for c in fours %}
+                    <p>{{ c.0 }} - {{ c.1 }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if fives %}
+            <div style="border: 1px solid black">
+                <p>五级({{ fives|length }})</p>
+                {% for c in fives %}
+                    <p>{{ c.0 }} - {{ c.1 }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+</body>
+
+</html>
