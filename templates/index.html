@@ -18,6 +18,9 @@
             })
 
             $("#index").addClass("pure-menu-selected")
+
+            alert("提示：此为测试版本，2、3、4级字库不可修改")
+
         })
     </script>
 
@@ -39,12 +42,12 @@
 
         <div id="content" style="text-align: center;margin-top: 30px" >
 
-            <form action="/view/" method="post" class="pure-form">
+            <form action="/view/" method="post" class="pure-form" target="_blank">
                 导入文章
                 <br/><br/>
                 <textarea name="article" style="width: 660px; height: 200px"></textarea>
                 <br/>
-                <input type="submit"  class="pure-button pure-button-primary" value="分析"/>
+                <input type="submit"  class="pure-button pure-button-primary" value="分析" />
             </form>
 
 
@@ -56,13 +59,13 @@
                 <textarea name="one_chars" style="width: 600px; height: 200px">{{ one.chars }}</textarea>
                 <br/>
                 二级：
-                <textarea name="two_chars" style="width: 600px; height: 200px">{{ two.chars }}</textarea>
+                <textarea name="two_chars2" style="width: 600px; height: 200px">{{ two.chars }}</textarea>
                 <br/>
                 三级：
-                <textarea name="three_chars" style="width: 600px; height: 200px">{{ three.chars }}</textarea>
+                <textarea name="three_chars2" style="width: 600px; height: 200px">{{ three.chars }}</textarea>
                 <br/>
                 四级：
-                <textarea name="four_chars" style="width: 600px; height: 200px">{{ four.chars }}</textarea>
+                <textarea name="four_chars2" style="width: 600px; height: 200px">{{ four.chars }}</textarea>
                 <br/>
                 五级：
                 <textarea name="five_chars" style="width: 600px; height: 200px">{{ five.chars }}</textarea>

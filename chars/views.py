@@ -46,27 +46,32 @@ def index(request):
 def save(request):
     one_chars = request.REQUEST.get("one_chars")
     one = Char.objects.get(level=1)
-    one.chars = one_chars
+    if one_chars:
+        one.chars = one_chars
     one.save()
 
     two_chars = request.REQUEST.get("two_chars")
     two = Char.objects.get(level=2)
-    two.chars = two_chars
+    if two_chars:
+        two.chars = two_chars
     two.save()
 
     three_chars = request.REQUEST.get("three_chars")
     three = Char.objects.get(level=3)
-    three.chars = three_chars
+    if three_chars:
+        three.chars = three_chars
     three.save()
 
     four_chars = request.REQUEST.get("four_chars")
     four = Char.objects.get(level=4)
-    four.chars = four_chars
+    if four_chars:
+        four.chars = four_chars
     four.save()
 
     five_chars = request.REQUEST.get("five_chars")
     five = Char.objects.get(level=5)
-    five.chars = five_chars
+    if five_chars:
+        five.chars = five_chars
     five.save()
 
     return HttpResponseRedirect("/")
@@ -95,6 +100,7 @@ def view(request):
             fours.append([char, four_chars.find(char)+1])
         if char in five_chars:
             fives.append([char, five_chars.find(char)+1])
+    rs = [ones, twos, threes, fours, fives]
     return render_to_response('view.html', locals())
 
 #====================login=============================================

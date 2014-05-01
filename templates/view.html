@@ -18,6 +18,7 @@
             })
 
             $("#view").addClass("pure-menu-selected")
+
         })
     </script>
 
@@ -37,52 +38,24 @@
             <h1>文字分析助手</h1>
         </div>
 
-        <div id="content" style="text-align: center;margin-top: 30px" >
-            {% if ones %}
-            <div style="border: 1px solid black">
-                <p>一级({{ ones|length }})</p>
-                {% for c in ones %}
-                    <p>{{ c.0 }} - {{ c.1 }}</p>
-                {% endfor %}
-            </div>
-            {% endif %}
+        <div id="content" style="text-align: center;margin-top: 30px;font-weight: bold;color: black" >
 
+            {% for r in rs %}
+                {% if r %}
+                    <div style="border: 1px solid gray">
+                        <p style="color: red">{{ forloop.counter }}级({{ r|length }})</p>
+                        {% for c in r %}
+                            <span style="float: left; margin-left: 50px; margin-top: 20px;border: 1px solid gray">
+                                {{ c.0 }}
+                                <a title="从字库中移除此字" data-char="{{ c.0 }}" data-level="{{ forloop.counter }}" class="remove_char">-</a>
+                                {{ c.1 }}
+                            </span>
+                        {% endfor %}
+                        <div style="clear: both; height: 50px "></div>
+                    </div>
+                {% endif %}
+            {% endfor %}
 
-            {% if twos %}
-            <div style="border: 1px solid black">
-                <p>二级({{ twos|length }})</p>
-                {% for c in twos %}
-                    <p>{{ c.0 }} - {{ c.1 }}</p>
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            {% if threes %}
-            <div style="border: 1px solid black">
-                <p>三级({{ threes|length }})</p>
-                {% for c in threes %}
-                    <p>{{ c.0 }} - {{ c.1 }}</p>
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            {% if fours %}
-            <div style="border: 1px solid black">
-                <p>四级({{ fours|length }})</p>
-                {% for c in fours %}
-                    <p>{{ c.0 }} - {{ c.1 }}</p>
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            {% if fives %}
-            <div style="border: 1px solid black">
-                <p>五级({{ fives|length }})</p>
-                {% for c in fives %}
-                    <p>{{ c.0 }} - {{ c.1 }}</p>
-                {% endfor %}
-            </div>
-            {% endif %}
 
         </div>
     </div>
