@@ -101,7 +101,26 @@ def view(request):
         if char in five_chars:
             fives.append([char, five_chars.find(char)+1])
     rs = [ones, twos, threes, fours, fives]
+
+    repeat = []
+    for c in article:
+        if article.count(c) > 1:
+            if not (article.count(c), c) in repeat:
+                repeat.append((article.count(c), c))
     return render_to_response('view.html', locals())
+
+
+
+def remove(request):
+    level = request.REQUEST.get("level")
+    char = request.REQUEST.get("char")
+
+    c = Char.objects.get(level=level)
+    c.chars = c.chars.replace(char, "")
+    c.save()
+    return HttpResponse("ok")
+
+
 
 #====================login=============================================
 def login(request):

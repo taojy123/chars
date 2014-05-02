@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     ('^index/$', index),
     ('^save/$', save),
     ('^view/$', view),
+    ('^remove/$', remove),
 )
 # This will work if DEBUG is True
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns

@@ -11,13 +11,37 @@
     <script type="text/javascript" src="/static/js/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src="/static/js/jquery.tablesorter.js"></script>
     <script type="text/javascript">
+
         $(function(){
+
             //表格显示
             $("#myTable").tablesorter({
                 widgets: ['zebra']
             })
 
             $("#view").addClass("pure-menu-selected")
+
+
+            $(".remove_char").click(function(){
+
+                if(!confirm("确定从字库删除？")){
+                    return
+                }
+                var level = $(this).attr("data-level")
+                var char = $(this).attr("data-char")
+                var perent = $(this).parent()
+
+                $.ajax({
+                    url:"/remove/",
+                    data:{
+                        level:level,
+                        char:char
+                    },
+                    success:function(){
+                        perent.fadeOut()
+                    }
+                })
+            })
 
         })
     </script>
@@ -47,7 +71,9 @@
                         {% for c in r %}
                             <span style="float: left; margin-left: 50px; margin-top: 20px;border: 1px solid gray">
                                 {{ c.0 }}
-                                <a title="从字库中移除此字" data-char="{{ c.0 }}" data-level="{{ forloop.counter }}" class="remove_char">-</a>
+                                <a title="从字库中移除此字" data-char="{{ c.0 }}" data-level="{{ forloop.counter }}" class="remove_char" style="cursor: pointer">
+                                    -
+                                </a>
                                 {{ c.1 }}
                             </span>
                         {% endfor %}
@@ -56,6 +82,16 @@
                 {% endif %}
             {% endfor %}
 
+            <div style="border: 1px solid gray">
+                <p style="color: red">重复计数</p>
+                {% for r in repeat %}
+                    <span style="float: left; margin-left: 50px; margin-top: 20px;border: 1px solid gray">
+                        {{ r.1 }} ( {{ r.0 }} )
+                    </span>
+                {% endfor %}
+
+                <div style="clear: both; height: 50px "></div>
+            </div>
 
         </div>
     </div>
