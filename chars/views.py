@@ -100,6 +100,11 @@ def view(request):
             fours.append([char, four_chars.find(char)+1])
         if char in five_chars:
             fives.append([char, five_chars.find(char)+1])
+    ones.sort(key=lambda a:a[1])
+    twos.sort(key=lambda a:a[1])
+    threes.sort(key=lambda a:a[1])
+    fours.sort(key=lambda a:a[1])
+    fives.sort(key=lambda a:a[1])
     rs = [ones, twos, threes, fours, fives]
 
     repeat = []
@@ -107,6 +112,7 @@ def view(request):
         if article.count(c) > 1:
             if not (article.count(c), c) in repeat:
                 repeat.append((article.count(c), c))
+    repeat.sort(reverse=True)
     return render_to_response('view.html', locals())
 
 
