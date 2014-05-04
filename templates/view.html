@@ -71,7 +71,7 @@
                         {% for c in r %}
                             <span style="float: left; margin-left: 50px; margin-top: 20px;border: 1px solid gray">
                                 {{ c.0 }}
-                                <a title="从字库中移除此字" data-char="{{ c.0 }}" data-level="{{ forloop.counter }}" class="remove_char" style="cursor: pointer">
+                                <a title="从字库中移除此字" data-char="{{ c.0 }}" data-level="{{ forloop.parentloop.counter }}" class="remove_char" style="cursor: pointer">
                                     -
                                 </a>
                                 {{ c.1 }}
